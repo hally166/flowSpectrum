@@ -33,7 +33,7 @@ spectralplot(ff,theme='viridis',save='no')
 The theme options are 'viridis', 'bigfoot', and 'aurora'.
 The save options are TRUE and FALSE.  TRUE will save a PNG into the working directory. FALSE will output to the R session.
 
-Defaults are theme='viridis', save='no'
+Defaults are: theme='viridis', save=FALSE
 
 ### ToDo - 09July21
 
