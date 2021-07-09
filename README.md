@@ -9,7 +9,7 @@ An R package to produce full spectrum flow cytometry plots outside the acquisiti
 The purpose of this package is to produce full spectrum flow cytometry plots outside the acquisition software.
 There are three styles designed to roughly mimic the output styles of the Bigfoot, Aurora, and R Viridis.
 The package takes flowFrames and flowSets as produced using the flowCore package.
-* Only works with Aurora, Bigfoot , and ID7000 FCS files.  If you have a SP7800 or Syphony spectral instrument send me a file and I will add support.  
+* Only works with Aurora, Bigfoot , and ID7000 FCS files.  If you have a SP7800 or Symphony spectral instrument send me a file and I will add support.  
 
 ## Usage
 Load data into R using flowCore either via read.FCS() or read.flowset(),
