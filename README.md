@@ -10,7 +10,7 @@ The purpose of this package is to produce full spectrum flow cytometry plots out
 There are three styles designed to roughly mimic the output styles of the Bigfoot, Aurora, and R Viridis.
 The package takes flowFrames and flowSets as produced using the flowCore package.
 
-## Useage
+## Usage
 Load data info R using flowCore either via read.FCS() or read.flowset()
 Envoke the spectralplot() function and choose a style and choose where to output the resulting image.
 
