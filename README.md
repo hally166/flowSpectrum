@@ -15,8 +15,16 @@ Load data info R using flowCore either via read.FCS() or read.flowset()
 Envoke the spectralplot() function and choose a style and choose where to output the resulting image.
 
 ```{r setup, out.width="100%"}
+#install from Github using devtools
+devtools::install_github('hally166/flowSpectrum')
+
+#load the package
 library(flowSpectrum)
+
+#flowSpectrum has one demo file that can be loaded.  
 ff<-read.FCS(system.file("extdata", "PE.fcs", package = "flowSpectrum"))
+
+#create plots using spectralplot(). spectralpolt() will accept a flowFrame or a flowSet
 spectralplot(ff,theme='viridis',save='no')
 ```
 ![PE spectrum](/man/PE.png)
