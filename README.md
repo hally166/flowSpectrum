@@ -41,3 +41,5 @@ Defaults are: theme='viridis', save=FALSE
 Handling negative numbers
 
 Autogating
+
+Test on SP6800 and Symphony spectral instruments
