@@ -30,7 +30,7 @@ Envoke the spectralplot() function and choose a style and choose where to output
 ```{r setup, out.width="100%"}
 library(flowSpectrum)
 ff<-read.FCS(system.file("extdata", "PE.fcs", package = "flowSpectrum"))
-spectralplot(ff,theme='viridis',save='no')
+spectralplot(ff,theme='viridis',save=FALSE)
 ```
 
 The theme options are 'viridis', 'bigfoot', and 'aurora'.
