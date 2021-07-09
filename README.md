@@ -11,8 +11,9 @@ There are three styles designed to roughly mimic the output styles of the Bigfoo
 The package takes flowFrames and flowSets as produced using the flowCore package.
 
 ## Usage
-Load data into R using flowCore either via read.FCS() or read.flowset()
-Envoke the spectralplot() function and choose a style and choose where to output the resulting image.
+Load data into R using flowCore either via read.FCS() or read.flowset(),
+
+Use the spectralplot() function, choose a style, and choose where to output the resulting image.  The default (i.e. just ```spectralplot(ff)```) will produce a viridis plot in the R session.
 
 ```{r setup, out.width="100%"}
 #install from Github using devtools
