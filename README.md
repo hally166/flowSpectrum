@@ -21,7 +21,7 @@ library(flowSpectrum)
 ff<-read.FCS(system.file("extdata", "PE.fcs", package = "flowSpectrum"))
 spectralplot(ff,theme='viridis',save='no')
 ```
-![PE spectrum](/man/PE.fcs_11-JUN-2021.png)
+![PE spectrum](/man/PE.png)
 
 
 The theme options are 'viridis', 'bigfoot', and 'aurora'.
