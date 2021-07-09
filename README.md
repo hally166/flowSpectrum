@@ -3,8 +3,6 @@ An R package to produce full spectrum flow cytometry plots outside the acquisiti
 
 **Author: Christopher Hall, Babraham Institute, UK**
 
-Contact: christopher.hall@babraham.ac.uk
-
 [Babraham Institute Flow Cytometry Facility](https://www.babraham.ac.uk/science-services/flow-cytometry)
 
 ## Purpose
