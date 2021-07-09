@@ -40,16 +40,14 @@ spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE){
       ggtitle(identifier(flowfile)) +
       xlab("Detector") +
       ylab("Intensity") +
-      scale_fill_gradientn(colours=c("white", "#440154FF", "#238A8DFF", "#55C667FF", "#B8DE29FF","#FDE725FF"),values=c(0,0.1,0.2,0.3,0.4,1))
+      scale_fill_gradientn(colours=c(NA, "#440154FF", "#238A8DFF", "#55C667FF", "#B8DE29FF","#FDE725FF"),values=c(0,0.1,0.2,0.3,0.4,1))
   } else if (theme=='aurora') {
     p<-ggplot(dat_long2, aes(factor(name, level = as.list(unique(dat_long2['name']))$name), value) ) +
       scale_y_continuous(trans='log',breaks=scales::breaks_log(7),limits = c(1,as.numeric(gsub("\\D", "", flowfile@description$`$P2R`)))) +
       geom_bin2d(bins = 512) +
       theme_bw() +
       theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
-            panel.grid.major = element_blank(),
-            panel.grid.minor = element_blank()
-            ) +
+            panel.grid.minor = element_blank()) +
       ggtitle(identifier(flowfile)) +
       xlab("Detector") +
       ylab("Intensity") +
