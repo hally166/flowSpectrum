@@ -35,7 +35,6 @@ spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE){
       geom_bin2d(bins = 512) +
       theme_bw() +
       theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
-            panel.grid.major = element_blank(),
             panel.grid.minor = element_blank()) +
       ggtitle(identifier(flowfile)) +
       xlab("Detector") +
@@ -47,6 +46,7 @@ spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE){
       geom_bin2d(bins = 512) +
       theme_bw() +
       theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+            panel.grid.major = element_blank(),
             panel.grid.minor = element_blank()) +
       ggtitle(identifier(flowfile)) +
       xlab("Detector") +
