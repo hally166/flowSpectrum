@@ -12,6 +12,10 @@ The package takes flowFrames and flowSets as produced using the flowCore package
 * Only works with Aurora, Bigfoot , and ID7000 FCS files.  The SP6800 uses a proprietary format that flowCore can't read. 
 
 ## Usage
+###Quick start
+```spectralplot(ff)```
+
+###More information
 Load data into R using flowCore either via read.FCS() or read.flowSet(),
 
 Use the spectralplot() function, choose a style, and choose where to output the resulting image.  The default (i.e. just ```spectralplot(ff)```) will produce a viridis plot in the R session.
