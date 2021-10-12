@@ -13,7 +13,6 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-
 **Author: Christopher Hall, Babraham Institute, UK**
 
 Contact: [christopher.hall@babraham.ac.uk](christopher.hall@babraham.ac.uk)
@@ -26,12 +25,12 @@ The package takes flowFrames and flowSets as produced using the flowCore package
 ## Useage
 Load data info R using flowCore either via read.FCS() or read.flowset()
 Envoke the spectralplot() function and choose a style and choose where to output the resulting image.
-
-```{r setup, out.width="100%"}
+```{r setup}
 library(flowSpectrum)
 ff<-read.FCS(system.file("extdata", "PE.fcs", package = "flowSpectrum"))
-spectralplot(ff,theme='viridis',save=FALSE)
+spectralplot(ff,theme='viridis',save=FALSE,bins=512)
 ```
 
 The theme options are 'viridis', 'bigfoot', and 'aurora'.
 The save options are TRUE and FALSE.  TRUE will save a PNG into the working directory. FALSE will output to the R session.
+```
