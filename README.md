@@ -35,7 +35,7 @@ ff<-read.FCS(system.file("extdata", "PE.fcs", package = "flowSpectrum"))
 #create plots using spectralplot(). spectralpolt() will accept a flowFrame or a flowSet
 spectralplot(ff,theme='viridis',save=FALSE, bins=512)
 ```
-![PE spectrum](/man/PE.png)
+![PE spectrum](/man/pe.png)
 
 
 The theme options are 'viridis', 'bigfoot', and 'aurora'.
