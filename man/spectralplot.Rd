@@ -4,7 +4,7 @@
 \alias{spectralplot}
 \title{Load data, choose a style, and choose output method}
 \usage{
-spectralplot(flowfile, theme = "viridis", save = FALSE)
+spectralplot(flowfile, theme = "viridis", save = FALSE, bins=512)
 }
 \arguments{
 \item{flowfile}{A flowSet or flowFrame}
@@ -12,6 +12,8 @@ spectralplot(flowfile, theme = "viridis", save = FALSE)
 \item{theme}{Choose a theme: 'viridis' (default), 'bigfoot', or 'aurora'}
 
 \item{save}{FALSE: in console (default). TRUE : as png file in working directory}
+  
+\item{bins}{Choose the granularity of the data. Default is 512}
 }
 \value{
 Images of full spectrum
