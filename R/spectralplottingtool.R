@@ -14,7 +14,7 @@
 #' @return Images of full spectrum
 #' @export
 
-spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE){
+spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE, bins=512){
   data<-as.data.frame(exprs(flowfile))
   if (flowfile@description$`$CYT`=="Aurora"){
     data2<-data[,-grep("SC|Time", names(data))]
@@ -35,7 +35,7 @@ spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE){
   if (theme=='viridis'){
     p<-ggplot(dat_long2, aes(factor(name, level = as.list(unique(dat_long2['name']))$name), value) ) +
       scale_y_continuous(trans='log',breaks=scales::breaks_log(7),limits = c(1,as.numeric(gsub("\\D", "", flowfile@description$`$P2R`)))) +
-      geom_bin2d(bins = 512) +
+      geom_bin2d(bins = bins) +
       theme_bw() +
       theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
             panel.grid.minor = element_blank()) +
@@ -46,7 +46,7 @@ spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE){
   } else if (theme=='aurora') {
     p<-ggplot(dat_long2, aes(factor(name, level = as.list(unique(dat_long2['name']))$name), value) ) +
       scale_y_continuous(trans='log',breaks=scales::breaks_log(7),limits = c(1,as.numeric(gsub("\\D", "", flowfile@description$`$P2R`)))) +
-      geom_bin2d(bins = 512) +
+      geom_bin2d(bins = bins) +
       theme_bw() +
       theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
             panel.grid.major = element_blank(),
@@ -58,7 +58,7 @@ spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE){
   } else if (theme == 'bigfoot') {
     p<-ggplot(dat_long2, aes(factor(name, level = as.list(unique(dat_long2['name']))$name), value) ) +
       scale_y_continuous(trans='log',breaks=scales::breaks_log(7),limits = c(1,as.numeric(gsub("\\D", "", flowfile@description$`$P2R`)))) +
-      geom_bin2d(bins = 512) +
+      geom_bin2d(bins = bins) +
       theme(panel.background = element_rect(fill = "white",colour = "white",size = 0.5, linetype = "solid"),
             axis.text.x = element_text(colour = "white",angle = 90, vjust = 0.5, hjust=1),
             axis.text.y = element_text(colour = "white"),
