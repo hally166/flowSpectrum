@@ -12,7 +12,7 @@
 #' @param bins Choose the granularity of the data.  Between 200 and 1000 works well for most data.
 #' @return Images of full spectrum
 #' @export
-spectralplot<-function(flowfile, theme='viridis', save=FALSE){
+spectralplot<-function(flowfile, theme='viridis', save=FALSE, bins=512){
   if((class(flowfile)[1]=="flowSet")==TRUE){
     fsApply(flowfile,function(x)spectralplottingtool(x,theme,save))
   } else{
