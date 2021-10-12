@@ -4,6 +4,7 @@
 #' Choose a theme: 'viridis', 'bigfoot', or 'aurora'.  Viridis is
 #' colourblind accessible.
 #' Choose to save to the working directory or display in current session.
+#' Choose the number of bins (granularity) of the data.
 #' If you misspell an option it will give an error.
 #'
 #' @param flowfile A flowSet or flowFrame

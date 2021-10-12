@@ -6,6 +6,7 @@
 #' Choose a theme: 'viridis', 'bigfoot', or 'aurora'.  Viridis is
 #' colourblind accessible.
 #' Choose to save to the working directory or display in current session.
+#' Choose the number of bins (granularity) of the data.
 #' If you misspell an option it will give an error.
 #'
 #' @param flowfile A flowSet or flowFrame
@@ -31,7 +32,7 @@ spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE, bins=512){
   } else {
     print("This FCS file is not from an Aurora, Bigfoot, or ID7000.  I will try and guess the relevant parameters...or I might just fail.")
     data2<-data[,grep("-A", names(data))]
-  } 
+  }
   dat_long2 <- tidyr::pivot_longer(data2, cols =1:length(colnames(data2)))
   if (theme=='viridis'){
     p<-ggplot(dat_long2, aes(factor(name, level = as.list(unique(dat_long2['name']))$name), value) ) +
