@@ -9,9 +9,10 @@
 #' @param flowfile A flowSet or flowFrame
 #' @param theme Choose a theme: 'viridis' (default), 'bigfoot', or 'aurora'
 #' @param save FALSE: in console (default). TRUE : as png file in working directory
-#' @param bins Choose the granularity of the data.  Between 200 and 1000 works well for most data.
+#' @param bins Choose the granularity of the data.
 #' @return Images of full spectrum
 #' @export
+
 spectralplot<-function(flowfile, theme='viridis', save=FALSE, bins=512){
   if((class(flowfile)[1]=="flowSet")==TRUE){
     fsApply(flowfile,function(x)spectralplottingtool(x,theme,save,bins))
