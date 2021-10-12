@@ -12,8 +12,8 @@ spectralplottingtool(flowfile, theme = "viridis", save = FALSE, bins = 512)
 \item{theme}{Choose a theme: 'viridis' (default), 'bigfoot', or 'aurora'}
 
 \item{save}{FALSE: in console (default). TRUE : as png file in working directory}
-  
-\item{bins}{Choose the granularity of the data. Default is 512}
+
+\item{bins}{Choose the granularity of the data.  Between 200 and 1000 works well for most data.}
 }
 \value{
 Images of full spectrum
@@ -25,5 +25,6 @@ This function tidies the fcs data from a flowFrame or flowSet.
 Choose a theme: 'viridis', 'bigfoot', or 'aurora'.  Viridis is
 colourblind accessible.
 Choose to save to the working directory or display in current session.
+Choose the number of bins (granularity) of the data.
 If you misspell an option it will give an error.
 }
