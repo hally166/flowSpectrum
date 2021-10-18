@@ -33,7 +33,7 @@ library(flowSpectrum)
 ff<-read.FCS(system.file("extdata", "PE.fcs", package = "flowSpectrum"))
 
 #create plots using spectralplot(). spectralpolt() will accept a flowFrame or a flowSet
-spectralplot(ff,theme='viridis',save=FALSE, bins=512)
+spectralplot(ff,theme='viridis',save=FALSE, bins=512, normalize=FALSE)
 ```
 ![PE spectrum](/man/pe.png)
 
@@ -42,10 +42,4 @@ The theme options are 'viridis', 'bigfoot', and 'aurora'.
 The save options are TRUE and FALSE.  TRUE will save a PNG into the working directory. FALSE will output to the R session.
 Set then granularity of the plot using bins = 
 
-Defaults are: theme='viridis', save=FALSE, bins=512
-
-### ToDo - 09July21
-
-Handling negative numbers
-
-Autogating
+Defaults are: theme='viridis', save=FALSE, bins=512,normalize=FALSE
