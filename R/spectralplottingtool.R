@@ -84,8 +84,8 @@ spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE, bins=512, n
     df<-cbind(rownames(df),df)
     df$`rownames(df)`<-factor(df$`rownames(df)`, levels = df$`rownames(df)`)
     p<-ggplot(data=df, aes(x=df[,'rownames(df)'], y=df[,'medians.max.medians.'], group=1)) +
-      geom_line()+
-      geom_point()+
+      geom_line(size=1)+
+      geom_point(size=2)+
       theme_bw() +
       theme(axis.text.x = element_text(colour = "black",angle = 90, vjust = 0.5, hjust=1))+
       ggtitle(identifier(flowfile)) +
