@@ -23,7 +23,7 @@ Load data into R using flowCore either via read.FCS() or read.flowSet(),
 Use the spectralplot() function, choose a style, and choose where to output the resulting image.  The default (i.e. just ```spectralplot(ff)```) will produce a viridis plot in the R session.
 
 ```{r setup, out.width="100%"}
-#install from Github using devtools
+#install from Github using devtools (or remotes)
 devtools::install_github('hally166/flowSpectrum')
 
 #load the package
@@ -33,13 +33,19 @@ library(flowSpectrum)
 ff<-read.FCS(system.file("extdata", "PE.fcs", package = "flowSpectrum"))
 
 #create plots using spectralplot(). spectralpolt() will accept a flowFrame or a flowSet
-spectralplot(ff,theme='viridis',save=FALSE, bins=512, normalize=FALSE)
+spectralplot(ff, theme='viridis', save=FALSE, bins=512, normalize=FALSE)
 ```
 ![PE spectrum](/man/pe.png)
 
+![PE normalized spectrum](/man/PE_normalized.png)
+
 
 The theme options are 'viridis', 'bigfoot', and 'aurora'.
-The save options are TRUE and FALSE.  TRUE will save a PNG into the working directory. FALSE will output to the R session.
-Set then granularity of the plot using bins = 
 
-Defaults are: theme='viridis', save=FALSE, bins=512,normalize=FALSE
+The save options are TRUE and FALSE.  TRUE will save a PNG into the working directory. FALSE will output to the R session.
+
+Set then granularity of the plot using ```bins =``` [a number].  I use something between 256 and 512.
+
+```Normalize = TRUE``` will produce a normlaized spectrum based on the max median intensity. 
+
+Defaults are: ```theme='viridis', save=FALSE, bins=512, normalize=FALSE```
