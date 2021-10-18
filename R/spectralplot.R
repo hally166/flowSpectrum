@@ -15,7 +15,7 @@
 #' @return Images of full spectrum
 #' @export
 
-spectralplot<-function(flowfile, theme='viridis', save=FALSE, bins=512, normalize=FALSE?){
+spectralplot<-function(flowfile, theme='viridis', save=FALSE, bins=512, normalize=FALSE){
   if((class(flowfile)[1]=="flowSet")==TRUE){
     fsApply(flowfile,function(x)spectralplottingtool(x,theme,save,bins))
   } else{
