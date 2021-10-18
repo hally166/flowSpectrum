@@ -4,7 +4,13 @@
 \alias{spectralplot}
 \title{Load data, choose a style, and choose output method}
 \usage{
-spectralplot(flowfile, theme = "viridis", save = FALSE, bins = 512)
+spectralplot(
+  flowfile,
+  theme = "viridis",
+  save = FALSE,
+  bins = 512,
+  normalize = FALSE
+)
 }
 \arguments{
 \item{flowfile}{A flowSet or flowFrame}
@@ -14,6 +20,8 @@ spectralplot(flowfile, theme = "viridis", save = FALSE, bins = 512)
 \item{save}{FALSE: in console (default). TRUE : as png file in working directory}
 
 \item{bins}{Choose the granularity of the data.}
+
+\item{normalize}{Normalize the data to the max median signal (only for clean signals).  TRUE or FALSE (default)}
 }
 \value{
 Images of full spectrum
