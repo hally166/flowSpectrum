@@ -25,8 +25,7 @@ spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE, bins=512, n
   } else if (flowfile@description$`$CYT`=="Bigfoot"){
     data2<-data[,-grep("SC", names(data))]
     data2<-data2[,grep("-A", names(data2))]
-    flowfile_colnames<-grep(pattern = "-A", unique(markernames(flowfile)), value=TRUE)
-    colnames(data2)<-grep(pattern = "Spectral ", flowfile_colnames, invert = TRUE, value=TRUE)
+    colnames(data2)<-grep(pattern = "Spectral|PRM|DropsSorted|SortDestination|SortIndex", flowfile_colnames, invert = TRUE, value=TRUE)
     data2<-data2[,order(names(data2))]
   } else if (flowfile@description$`$CYT`=="ID7000"){
     data2<-data[,-grep("SC", names(data))]
