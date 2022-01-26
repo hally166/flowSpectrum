@@ -42,7 +42,7 @@ spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE, bins=512, n
       }
     data2<-data[,parameters]
   }
-  dat_long2 <- tidyr::pivot_longer(data2, cols =1:length(parameters))
+  dat_long2 <- tidyr::pivot_longer(data2, cols =1:length(colnames(data2)))
   if (normalize==FALSE){
     if (theme=='viridis'){
       p<-ggplot(dat_long2, aes(factor(name, level = as.list(unique(dat_long2['name']))$name), value) ) +
