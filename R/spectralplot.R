@@ -20,6 +20,6 @@ spectralplot<-function(flowfile, theme='viridis', save=FALSE, bins=512, normaliz
   if((class(flowfile)[1]=="flowSet")==TRUE){
     fsApply(flowfile,function(x)spectralplottingtool(x,theme,save,bins,normalize))
   } else{
-    spectralplottingtool(flowfile,theme,save,bins,normalize)
+    spectralplottingtool(flowfile,theme,save,bins,normalize,params)
   }
 }
