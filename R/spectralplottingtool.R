@@ -33,12 +33,16 @@ spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE, bins=512, n
     data2<-data[,-grep("SC", names(data))]
     data2<-data2[,grep("-A", names(data2))]
   } else {
-    print("This FCS file is not from an Aurora, Bigfoot, or ID7000.  I will try and guess the relevant parameters...or I might just fail.
-          Consider setting the params argument")
-    cols<-if(!is.null(params)){factor(params, levels = params)} else{!grep("-A", names(data))}
-    data2<-data[,cols]
+    if(!is.null(params)){
+      print("This FCS file is not from an Aurora, Bigfoot, or ID7000. Using params argument.")
+      parameters<-params
+    } else{
+      print("This FCS file is not from an Aurora, Bigfoot, or ID7000.  I will try and guess the relevant parameters...or I might just fail. Consider setting the params argument")
+      parameters<-grep("-A", names(data))
+      }
+    data2<-data[,parameters]
   }
-  dat_long2 <- tidyr::pivot_longer(data2, cols =1:length(cols))
+  dat_long2 <- tidyr::pivot_longer(data2, cols =1:length(parameters))
   if (normalize==FALSE){
     if (theme=='viridis'){
       p<-ggplot(dat_long2, aes(factor(name, level = as.list(unique(dat_long2['name']))$name), value) ) +
