@@ -9,7 +9,8 @@ spectralplottingtool(
   theme = "viridis",
   save = FALSE,
   bins = 512,
-  normalize = FALSE
+  normalize = FALSE,
+  params = NULL
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ spectralplottingtool(
 \item{bins}{Choose the granularity of the data.  Between 200 and 1000 works well for most data.}
 
 \item{normalize}{Normalize the data to the max median signal (only for clean signals).  TRUE or FALSE (default)}
+
+\item{params}{Default NULL. Specify parameters (in order) to plot. Only used if data are not from an Aurora, ID7000, or BigFoot instrument.}
 }
 \value{
 Images of full spectrum

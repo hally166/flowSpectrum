@@ -15,10 +15,11 @@
 #' @param save FALSE: in console (default). TRUE : as png file in working directory
 #' @param bins Choose the granularity of the data.  Between 200 and 1000 works well for most data.
 #' @param normalize Normalize the data to the max median signal (only for clean signals).  TRUE or FALSE (default)
+#' @param params Default NULL. Specify parameters (in order) to plot. Only used if data are not from an Aurora, ID7000, or BigFoot instrument.
 #' @return Images of full spectrum
 #' @export
 
-spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE, bins=512, normalize=FALSE){
+spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE, bins=512, normalize=FALSE, params=NULL){
   data<-as.data.frame(exprs(flowfile))
   if (flowfile@description$`$CYT`=="Aurora"){
     data2<-data[,-grep("SC|Time", names(data))]
@@ -32,8 +33,10 @@ spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE, bins=512, n
     data2<-data[,-grep("SC", names(data))]
     data2<-data2[,grep("-A", names(data2))]
   } else {
-    print("This FCS file is not from an Aurora, Bigfoot, or ID7000.  I will try and guess the relevant parameters...or I might just fail.")
-    data2<-data[,grep("-A", names(data))]
+    print("This FCS file is not from an Aurora, Bigfoot, or ID7000.  I will try and guess the relevant parameters...or I might just fail.\n
+          Consider setting the params argument")
+    cols<-if(!is.null(factor(params, levels = params))){params} else{!grep("-A", names(data))}
+    data2<-data[,cols]
   }
   dat_long2 <- tidyr::pivot_longer(data2, cols =1:length(colnames(data2)))
   if (normalize==FALSE){
