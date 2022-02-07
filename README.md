@@ -33,7 +33,7 @@ library(flowSpectrum)
 ff<-read.FCS(system.file("extdata", "PE.fcs", package = "flowSpectrum"))
 
 #create plots using spectralplot(). spectralpolt() will accept a flowFrame or a flowSet
-spectralplot(ff, theme='viridis', save=FALSE, bins=512, normalize=FALSE)
+spectralplot(ff, theme='viridis', save=FALSE, bins=512, normalize=FALSE, params=NULL)
 ```
 ![PE spectrum](/man/pe.png)
 
@@ -46,6 +46,8 @@ The save options are TRUE and FALSE.  TRUE will save a PNG into the working dire
 
 Set then granularity of the plot using ```bins =``` [a number].  I use something between 256 and 512.
 
-```Normalize = TRUE``` will produce a normlaized spectrum based on the max median intensity. 
+```Normalize = TRUE``` will produce a normalized spectrum based on the max median intensity. 
 
-Defaults are: ```theme='viridis', save=FALSE, bins=512, normalize=FALSE```
+Specify which parameters to plot (in the order specified) using ```params =``` [a character vector of parameter names].
+
+Defaults are: ```theme='viridis', save=FALSE, bins=512, normalize=FALSE, params=NULL```
