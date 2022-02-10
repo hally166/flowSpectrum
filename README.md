@@ -51,3 +51,6 @@ Set then granularity of the plot using ```bins =``` [a number].  I use something
 Specify which parameters to plot (in the order specified) using ```params =``` [a character vector of parameter names].
 
 Defaults are: ```theme='viridis', save=FALSE, bins=512, normalize=FALSE, params=NULL```
+
+To use the ```params``` argument you must supply a character vector (not a list).  For example, to reorder to the same as the source file
+```params <- grep("-W|-H|Time|SC",ff@parameters@data$name,value = TRUE, invert=TRUE)```
