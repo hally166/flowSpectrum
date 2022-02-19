@@ -33,7 +33,7 @@ library(flowSpectrum)
 ff<-read.FCS(system.file("extdata", "PE.fcs", package = "flowSpectrum"))
 
 #create plots using spectralplot(). spectralpolt() will accept a flowFrame or a flowSet
-spectralplot(ff, theme='viridis', save=FALSE, bins=512, normalize=FALSE, params=NULL)
+spectralplot(ff, theme='viridis', save=FALSE, bins=512, normalize=FALSE, params=NULL, guessPop=FALSE, unstained=NULL)
 ```
 ![PE spectrum](/man/pe.png)
 
@@ -49,6 +49,8 @@ Set then granularity of the plot using ```bins =``` [a number].  I use something
 ```Normalize = TRUE``` will produce a normalized spectrum based on the max median intensity. 
 
 Specify which parameters to plot (in the order specified) using ```params =``` [a character vector of parameter names].
+
+Use ```guessPop = TRUE``` and ```normalize = TRUE``` to select the positive events from a mixed control.  Add a file to unstained.
 
 Defaults are: ```theme='viridis', save=FALSE, bins=512, normalize=FALSE, params=NULL```
 
