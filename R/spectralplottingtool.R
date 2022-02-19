@@ -11,15 +11,22 @@
 #' If you misspell an option it will give an error.
 #'
 #' @param flowfile A flowSet or flowFrame.
-#' @param theme Choose a theme: 'viridis' (default), 'bigfoot', or 'aurora'.
-#' @param save FALSE: in console (default). TRUE : as png file in working directory.
+#' @param theme Choose a theme: 'viridis', 'bigfoot', or 'aurora'.
+#' @param save FALSE: in console. TRUE : as png file in working directory.
 #' @param bins Choose the granularity of the data.  Between 200 and 1000 works well for most data.
-#' @param normalize Normalize the data to the max median signal (only for clean signals).  TRUE or FALSE (default).
-#' @param params Specify parameters (in order) to plot. If NULL (default), parameters will be selected based on the cytometer model.
+#' @param normalize Normalize the data to the max median signal (only for clean signals).  TRUE or FALSE
+#' @param params Specify parameters (in order) to plot. Parameters will be selected based on the cytometer model.
+#' @param guessPop Try to select only the positive spectral signal (200 events).  It is recommend to set normalize to TRUE when using guessPop.
 #' @return Images of full spectrum
+#' @author Christopher Hall, Babraham Institute
+#' @seealso \code{\link[flowSpectrum]{spectralplot}}
 #' @export
 
-spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE, bins=512, normalize=FALSE, params=NULL){
+spectralplottingtool<-function(flowfile, theme, save, bins, normalize, params, guessPop, unstained){
+  if(guessPop==TRUE & is.null(unstained)){
+    print("you must specify an unstained control (flowFrame) for guessPop to work")
+    stop("you must specify an unstained control (flowFrame) for guessPop to work")
+    }
   data<-as.data.frame(exprs(flowfile))
   if (!is.null(params)){
     data2<-data[, params]
@@ -36,7 +43,21 @@ spectralplottingtool<-function(flowfile,theme='viridis', save=FALSE, bins=512, n
     data2<-data2[,grep("-A", names(data2))]
   } else{
       print("This FCS file is not from an Aurora, Bigfoot, or ID7000.  I will try and guess the relevant parameters...or I might just fail. Consider setting the params argument")
-    data2<-data[, grep("-A", names(data))]
+      data2<-data[, grep("-A", names(data))]
+  }
+  if(guessPop==TRUE & !is.null(unstained)){
+    control_df<-exprs(unstained)
+    control_df<-as.data.frame(control_df)
+    control_df<-control_df[,-grep("SC", names(control_df))]
+    control_df<-control_df[,grep("-A", names(control_df))]
+    control_df<-control_df[!apply(control_df, 1, function(x) {any(x > as.numeric(keyword(flowfile)$`$P6R`))}),]
+    todelete<-(apply(control_df, 2, median))
+    sample_df<-data2[!apply(data2, 1, function(x) {any(x > as.numeric(keyword(flowfile)$`$P6R`))}),]
+    sample_df<-sweep(sample_df, 2, todelete, "-")
+    means<-apply(sample_df, 2, mean)
+    tosort<-sort(means,decreasing = TRUE)[1]
+    sample_pos<- sample_df[order(sample_df[,names(tosort)],decreasing = TRUE),]
+    data2 <- sample_pos[1:200,]
   }
   dat_long2 <- tidyr::pivot_longer(data2, cols =1:length(colnames(data2)))
   if (normalize==FALSE){
