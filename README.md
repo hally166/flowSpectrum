@@ -23,22 +23,28 @@ Load data into R using flowCore either via read.FCS() or read.flowSet(),
 Use the spectralplot() function, choose a style, and choose where to output the resulting image.  The default (i.e. just ```spectralplot(ff)```) will produce a viridis plot in the R session.
 
 ```{r setup, out.width="100%"}
-#install from Github using devtools (or remotes)
+## install from Github using devtools (or remotes)
 devtools::install_github('hally166/flowSpectrum')
 
-#load the package
+## load the package
 library(flowSpectrum)
 
-#flowSpectrum has one demo file that can be loaded.  
+## flowSpectrum has one demo file that can be loaded.  
 ff<-read.FCS(system.file("extdata", "PE.fcs", package = "flowSpectrum"))
 
-#create plots using spectralplot(). spectralpolt() will accept a flowFrame or a flowSet
+## create plots using spectralplot(). spectralpolt() will accept a flowFrame or a flowSet
 spectralplot(ff, theme='viridis', save=FALSE, bins=512, normalize=FALSE, params=NULL, guessPop=FALSE, unstained=NULL)
 ```
 ![PE spectrum](/man/pe.png)
 
 ![PE normalized spectrum](/man/PE_normalized.png)
 
+```
+## if you want flowSpectrum to select only the positive spectrum use guessPop.  I advice using normalize = TRUE as it only selects 200 events.
+ff<-read.FCS("C:/sample1.fcs)
+ctrl_ff<-read.FCS("C:/unstained.fcs)
+spectralplot(ff, normalize=TRUE, guessPop=TRUE, unstained=ctrl_ff)
+```
 
 The theme options are 'viridis', 'bigfoot', and 'aurora'.
 
