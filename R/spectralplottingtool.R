@@ -102,7 +102,7 @@ spectralplottingtool<-function(flowfile, theme, save, bins, normalize, params, g
         scale_fill_gradientn(colours=c("darkblue", "blue", "green", "yellow", "orange","red"),values=c(0,0.1,0.2,0.5,0.6,1))
     }
   } else if (normalize==TRUE){
-    print("Normalize only works for clean signals, pre-gate data if necessary")
+    print("Normalize only works for clean signals. Use guessPop=TRUE or pre-gate data if necessary")
     medians<-apply(data2,2,median) #Calculate the medians and factorise the data
     df<-data.frame(medians/max(medians))
     df<-cbind(rownames(df),df)
