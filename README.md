@@ -18,7 +18,7 @@ The package takes flowFrames and flowSets as produced using the flowCore package
 
 ### More information
 
-Load data into R using flowCore either via read.FCS() or read.flowSet(),
+Load data into R using flowCore either via read.FCS(), read.flowSet(), or read.ncdfFlowSet.
 
 Use the spectralplot() function, choose a style, and choose where to output the resulting image.  The default (i.e. just ```spectralplot(ff)```) will produce a viridis plot in the R session.
 
