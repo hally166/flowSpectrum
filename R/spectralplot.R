@@ -42,7 +42,9 @@
 spectralplot<-function(flowfile, theme='viridis', save=FALSE, bins=512, normalize=FALSE, params=NULL, guessPop=FALSE, unstained=NULL){
   if((class(flowfile)[1]=="flowSet")==TRUE){
     fsApply(flowfile,function(x)spectralplottingtool(x,theme,save,bins,normalize,params,guessPop,unstained))
-  } else{
+  } else if ((class(flowfile)[1]=="ncdfFlowSet")==TRUE){
+    fsApply(flowfile,function(x)spectralplottingtool(x,theme,save,bins,normalize,params,guessPop,unstained))
+  } else {
     spectralplottingtool(flowfile,theme,save,bins,normalize,params,guessPop,unstained)
   }
 }
