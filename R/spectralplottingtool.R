@@ -43,7 +43,9 @@ spectralplottingtool<-function(flowfile, theme, save, bins, normalize, params, g
     data2<-data2[,grep("-A", names(data2))]
   } else{
       print("This FCS file is not from an Aurora, Bigfoot, or ID7000.  I will try and guess the relevant parameters...or I might just fail. Consider setting the params argument")
+      data2<-data[,-grep("SC|SS|FS|Ratio", names(data))]  
       data2<-data[, grep("-A", names(data))]
+      
   }
   if(guessPop==TRUE & !is.null(unstained)){
     control_df<-exprs(unstained)
