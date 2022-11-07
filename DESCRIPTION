@@ -1,7 +1,7 @@
 Package: flowSpectrum
 Type: Package
 Title: Creates flow cytometry spectral plots from the Aurora, Bigfoot and ID7000
-Version: 0.9.0
+Version: 0.9.1
 Author: Christopher Hall, Babraham Institute, UK
 Maintainer: Christopher Hall <christopher.hall@babraham.ac.uk>
 Description: Creates flow cytometry spectral plots from the Aurora, Bigfoot and ID7000 using ggplot and flowCore.  You can choose one of three layouts, 'vidiris' for colourblind friendlieness, 'aurora' to mimic SpectroFlo, or 'bigfoot' to mimic SQS.
