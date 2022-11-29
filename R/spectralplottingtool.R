@@ -62,6 +62,8 @@ spectralplottingtool<-function(flowfile, theme, save, bins, normalize, params, g
     data2 <- sample_pos[1:200,]
   }
   dat_long2 <- tidyr::pivot_longer(data2, cols =1:length(colnames(data2)))
+  assign("spec_long",dat_long2, envir = .GlobalEnv)
+  assign("spec_table",data2, envir = .GlobalEnv)  
   if (normalize==FALSE){
     if (theme=='viridis'){
       p<-ggplot(dat_long2, aes(factor(name, level = as.list(unique(dat_long2['name']))$name), value) ) +
