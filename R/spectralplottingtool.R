@@ -50,7 +50,7 @@ spectralplottingtool<-function(flowfile, theme, save, bins, normalize, params, g
   if(guessPop==TRUE & !is.null(unstained)){
     control_df<-exprs(unstained)
     control_df<-as.data.frame(control_df)
-    control_df<-control_df[,-grep("SC", names(control_df))]
+    control_df<-control_df[,-grep("SC|SS|FS|Ratio|T0|T1|INFO|TIME", names(control_df))]
     control_df<-control_df[,grep("-A", names(control_df))]
     control_df<-control_df[!apply(control_df, 1, function(x) {any(x > as.numeric(keyword(flowfile)$`$P6R`))}),]
     todelete<-(apply(control_df, 2, median))
